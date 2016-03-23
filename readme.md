@@ -1,6 +1,6 @@
 #Poster - 简单方便的web界面的接口测试工具
 
-![Poster](https://github.com/Jaggle/poster/master/static/images/screenshot.png)
+![Poster](https://raw.githubusercontent.com/Jaggle/poster/master/static/images/screenshot.png)
 ##特点
 
  - 自动保存，只要测试过的接口都会记录下来并根据你的使用次数从大到小排序
