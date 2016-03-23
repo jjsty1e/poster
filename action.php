@@ -1,23 +1,14 @@
 <?php
-/**
- * @package       poster
- * @copyright     Copyright 2016 杭州阿拉丁信息科技股份有限公司武汉分公司
- * @author        JAKE
- * @time          2016/3/14 13:34
- * @description
- */
-
-
-
+$config = require_once 'config.php';
 if(isset($_POST['action'])){
 	require_once 'config.php';
-	$CFG = new Config();
 	switch($_POST['action']){
 		case 'addLink' :
 			$time = date('Y-m-d H:i:s');
 			$ip = $_SERVER['REMOTE_ADDR'];
 			try{
-				$dbHandler = new PDO("mysql:dbname=".$CFG::DBNAME.";host=".$CFG::HOST, $CFG::DBUSER, $CFG::DBPSWD);
+				$dsn = 'mysql:dbname='.$config['dbname'].';host='.$config['host'];
+                $dbHandler = new PDO($dsn,$config['user'],$config['password']);
 				$insert_sql = "insert into p_links(link,time,ip,times) values('{$_POST['link']}','{$time}','{$ip}',1)";
 				$find_sql = "select * from p_links where link = '{$_POST['link']}'";
 				$has = $dbHandler->query($find_sql);

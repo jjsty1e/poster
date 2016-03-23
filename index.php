@@ -1,8 +1,9 @@
 <?php
-
+$config = require_once 'config.php';
 
 try {
-    $dbHandler = new PDO('mysql:dbname=poster;host=127.0.0.1', 'root', '');
+    $dsn = 'mysql:dbname='.$config['dbname'].';host='.$config['host'];
+    $dbHandler = new PDO($dsn,$config['user'],$config['password']);
     $result = $dbHandler->query('select * from p_links ORDER BY times desc');
     $data = [];
     foreach ($result as $key => $row) {
@@ -13,7 +14,6 @@ try {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
